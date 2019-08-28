@@ -1,19 +1,8 @@
-# osu-networks
-Collection of work from Spring 2019 Introduction to Networks (CS 372) course at Oregon State University.
+Derek Yang
+CS372 Programming Assignment#2
 
-## Assignment 1 - Chat Client and Chat Server in C and Python
-The chatserve.py and chatclient.c programs will run a chat client and chat server where the client is written in C89 and the 
-server is written in Python 3.  The following events will occur:
-1.  The server starts
-2.  The client starts and asks user for a handle
-3.  The client then asks the user for the initial message to send to the server
-4.  The client sends the initial message
-5.  Server receives message
-6.  Connection is established
-7.  Client and Server can send messages between each other until one sends the command \quit
-
-## Homework 2 - FTP Server and Client
-The following programs run a server (C89) and client (Python 3) where the following actions will occur:
+Description taken from assignment:
+The following programs run a server and client where the following actions will occur:
 1. ftserver starts on Host A, and validates command-line parameters (<SERVER_PORT>).
 2. ftserver waits on <PORTNUM> for a client request.
 3. ftclient starts on Host B, and validates any pertinent command-line parameters.
@@ -43,3 +32,27 @@ The following programs run a server (C89) and client (Python 3) where the follow
 				• ftserver closes connection Q (don’t leave open sockets!).
 8. ftclient closes connection P (don’t leave open sockets!) and terminates.
 9. ftserver repeats from 2 (above) until terminated by a supervisor (SIGINT).
+
+Files:
+ftserver.c
+ftclient.py
+
+Requires:
+python3 and c89
+
+To compile ftserver.c use: 
+gcc ftserver.c -o ftserver
+
+To run server and client:
+First run ftserver.c using the command: ./ftserver <port>
+Then run ftclient.py using the commands:
+(For -l)  python3 ftclient.py <serverhostname> <serverport> <-l> <dataport>
+(For -g)  python3 ftclient.py <serverhostname> <serverport> <-g> <filename> <dataport>
+
+Example:
+gcc ftserver.c -o ftserver
+./ftserver 44933
+python3 ftclient.py flip1.engr.oregonstate.edu 44933 -l 33945
+python3 ftclient.py flip1.engr.oregonstate.edu 44933 -g alice.txt 33946
+
+The code was tested using flip1.engr.oregonstate.edu (server) and flip3.engr.oregonstateedu (client)
